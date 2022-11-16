@@ -1,30 +1,67 @@
-﻿<!DOCTYPE html>
-
+<!DOCTYPE html>
 <html>
-
     <head>
-
         <title>Launch SAP GUI</title>
-
         <meta charset="UTF-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            * {padding: 0; margin:0; box-sizing: border-box; font-family: verdana, sans-serif;}
 
+            body { background-color: #f5f5f5;}
+
+            header {
+                height: 80px;
+                background-color: #434343;
+                margin: 0 auto;
+            }
+
+            header img.logo {
+                width: 164px;
+                margin-left: 40px;
+                margin-top: 24px;
+                vertical-align: top;
+            }
+
+            header img.linia--vh {
+                margin-top: 23px;
+                margin-left: 30px;
+                height: 37px;
+                vertical-align: top;
+            }
+
+            header div.fapp_titol {
+                display: inline-block;
+                color: #FFFFFF;
+                font-size: 20px;
+                font-weight: bold;
+                line-height: 24px;
+                margin-left: 27px;
+                margin-top: 31px;
+                vertical-align: top;
+            }
+
+            img { border-style: none; }
+
+            h2 { color: rgba(67,67,67,0.7); }
+
+            .wrapper {
+                text-align: center;
+                margin-top: calc(30vh);
+            }
+        </style>
     </head>
-
-
-
     <body>
+        <header>
+            <img class="logo" src="data:image/png;base64,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" alt="logo portal mediapro" />
+            <img class="linia--vh" src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjFweCIgaGVpZ2h0PSIzNHB4IiB2aWV3Qm94PSIwIDAgMSAzNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4NCiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA1Mi41ICg2NzQ2OSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+DQogICAgPHRpdGxlPjFDQTZERDJGLUFCOUYtNDVCRi04MTQ3LTk5ODZCOTlGMjAxNTwvdGl0bGU+DQogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIHNrZXRjaHRvb2wuPC9kZXNjPg0KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIG9wYWNpdHk9IjAuMzAwMDAwMDEyIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIj4NCiAgICAgICAgPGcgaWQ9IkF1ZGllbmNpYXMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMzQuMDAwMDAwLCAtMjQuMDAwMDAwKSIgc3Ryb2tlPSIjOTc5Nzk3Ij4NCiAgICAgICAgICAgIDxnIGlkPSJIRUFERVIiPg0KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMzQuNSwyNS4xNzM3Mjk3IEwyMzQuNSw1NyIgaWQ9IkxpbmUtMiI+PC9wYXRoPg0KICAgICAgICAgICAgPC9nPg0KICAgICAgICA8L2c+DQogICAgPC9nPg0KPC9zdmc+' alt='separador header' />
+            <div class='fapp_titol' id='titol_contingut'>SAP logon Launcher</div>
+        </header>
 
-
-
-    <script type="text/javascript">
-
-        window.location.href = 'saplogon://';
-        
-        
-    </script>
-
-
-
+        <div class="wrapper">
+            <h2>Ya has hecho login en SAP, puedes cerrar esta pestaña</h2>
+        </div>
+        <script type="text/javascript">
+            window.location.href = 'saplogon://';
+        </script>
+    </body>
 </html>
